@@ -28,7 +28,7 @@ echo '*' > ReduceBrightness-$PATCH_VERSION/.gitignore
 if [ $BUILD_FAB4 = true ]; then
 	echo 'Building patch for Squeezebox Touch...'
 
-	git diff $VERSION ../src/squeezeplay_fab4/share/applets/SqueezeboxFab4/* > ReduceBrightness-$PATCH_VERSION/ReduceBrightness-fab4-$PATCH_VERSION.patch
+	git diff public/$VERSION ../src/squeezeplay_fab4/share/applets/SqueezeboxFab4/* > ReduceBrightness-$PATCH_VERSION/ReduceBrightness-fab4-$PATCH_VERSION.patch
 
 	cd ReduceBrightness-$PATCH_VERSION
 	sed 's/--- a\/src\/squeezeplay_fab4\/share\//--- share\/jive\//g' ReduceBrightness-fab4-$PATCH_VERSION.patch > ReduceBrightness-fab4.patch.tmp
@@ -36,7 +36,7 @@ if [ $BUILD_FAB4 = true ]; then
 	sed 's/+++ b\/src\/squeezeplay_fab4\/share\//+++ share\/jive\//g' ReduceBrightness-fab4-$PATCH_VERSION.patch > ReduceBrightness-fab4.patch.tmp
 	mv ReduceBrightness-fab4.patch.tmp ReduceBrightness-fab4-$PATCH_VERSION.patch
 
-	CHECKSUM=`sha1sum ReduceBrightness-fab4-$PATCH_VERSION.patch | awk '{print $1}'`
+	CHECKSUM=`shasum ReduceBrightness-fab4-$PATCH_VERSION.patch | awk '{print $1}'`
 
 	# Copy base XML file to output directory
 	cp ../repo.xml repo.xml
@@ -59,7 +59,7 @@ fi
 
 if [ $BUILD_BABY = true ]; then
 	echo 'Building patch for Squeezebox Radio...'
-	git diff $VERSION ../src/squeezeplay_baby/share/applets/SqueezeboxBaby/* > ReduceBrightness-$PATCH_VERSION/ReduceBrightness-baby-$PATCH_VERSION.patch
+	git diff public/$VERSION ../src/squeezeplay_baby/share/applets/SqueezeboxBaby/* > ReduceBrightness-$PATCH_VERSION/ReduceBrightness-baby-$PATCH_VERSION.patch
 
 	cd ReduceBrightness-$PATCH_VERSION
 	sed 's/--- a\/src\/squeezeplay_baby\/share\//--- share\/jive\//g' ReduceBrightness-baby-$PATCH_VERSION.patch > ReduceBrightness-baby.patch.tmp
@@ -67,8 +67,8 @@ if [ $BUILD_BABY = true ]; then
 	sed 's/+++ b\/src\/squeezeplay_baby\/share\//+++ share\/jive\//g' ReduceBrightness-baby-$PATCH_VERSION.patch > ReduceBrightness-baby.patch.tmp
 	mv ReduceBrightness-baby.patch.tmp ReduceBrightness-baby-$PATCH_VERSION.patch
 
-	CHECKSUM=`sha1sum ReduceBrightness-fab4-$PATCH_VERSION.patch | awk '{print $1}'`
-	CHECKSUMBABY=`sha1sum ReduceBrightness-baby-$PATCH_VERSION.patch | awk '{print $1}'`
+	CHECKSUM=`shasum ReduceBrightness-fab4-$PATCH_VERSION.patch | awk '{print $1}'`
+	CHECKSUMBABY=`shasum ReduceBrightness-baby-$PATCH_VERSION.patch | awk '{print $1}'`
 
 	# Copy base XML file to output directory
 	cp ../repo-beta.xml repo-beta.xml
