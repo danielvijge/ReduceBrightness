@@ -101,7 +101,6 @@ function init(self, ...)
 	Framework:addListener(ACTION | EVENT_KEY_PRESS | EVENT_KEY_HOLD | EVENT_SCROLL | EVENT_MOUSE_PRESS | EVENT_MOUSE_HOLD | EVENT_MOUSE_DRAG,
 		function(event)
 
-			self.isScreenSaverActive = false
 			-- screensaver is not active
 			if #self.active == 0 then
 				return EVENT_UNUSED
